@@ -1,19 +1,43 @@
-# 🌐 Global Sales Intelligence Dashboard
+# 🌐 Global Sales Intelligence (GSI) Dashboard  
+### Superstore Retail Analytics — Futuristic & Interactive  
 
-![Dashboard Preview](https://raw.githubusercontent.com/Reswn/Visualisasi-Data-1/main/public/screenshot.png)  
-*(Tambahkan screenshot saat sudah di-commit!)*
+![GSI Dashboard Preview](https://github.com/Reswn/Global-Sales-Intelligence-Supershop-Data-Visualization/blob/main/GSI%20insight.png?raw=true)
 
-A **futuristic, neon-powered interactive dashboard** for deep-dive retail analytics — built with pure frontend tech (no backend required). Explore sales, profit, customer behavior, and product performance across categories, regions, and time — all in real-time.
+A **neon-futuristic, fully interactive dashboard** for deep retail analytics — built with pure frontend tech. Explore sales, profit, customer behavior, and product performance across categories, regions, and time — all in real time, no backend required.
 
-➡️ **Live Demo**: [https://gsidatavisualizationrenikartikasuwa.vercel.app/](https://gsidatavisualizationrenikartikasuwa.vercel.app/)
+➡️ **Live Demo**: [https://gsidatavisualizationrenikartikasuwa.vercel.app/](https://gsidatavisualizationrenikartikasuwa.vercel.app/)  
+📦 **Source Code**: [GitHub Repository](https://github.com/Reswn/Global-Sales-Intelligence-Supershop-Data-Visualization.git)
 
 ---
 
 ## 📌 Overview
 
-This dashboard visualizes the **Global Superstore Dataset** (Kaggle) to empower data-driven decision making. Designed with a cyberpunk/neon aesthetic, it combines interactivity, analytical depth, and visual clarity — ideal for business analysts, managers, students, and data enthusiasts.
+This project visualizes the **Global Superstore Dataset** (Kaggle) to deliver actionable business insights through an intuitive, visually striking interface. Designed with a cyberpunk-inspired neon aesthetic and glassmorphism UI, it empowers users to:
 
-All processing happens client-side using JavaScript. No server, no database — just HTML, CSS, and modern charting libraries.
+- Identify top-performing products & underperforming regions  
+- Detect seasonal patterns and growth trends  
+- Analyze discount elasticity and segment behavior  
+- Make data-driven decisions — instantly.
+
+All computation runs client-side using JavaScript. Zero server dependencies.
+
+---
+
+## 📊 Dataset
+
+- **Source**: [Global Superstore Dataset — Kaggle (by ronysoliman)](https://www.kaggle.com/datasets/ronysoliman/global-superstore-dataset)  
+- **File Used**: `superstore_clean.csv` *(cleaned & optimized for visualization)*  
+- **Records**: ~11,000 transaction rows  
+- **Time Range**: 2014 – 2017  
+- **Geography**: 4 Regions (East, West, Central, South), 530+ Cities  
+- **Categories**: Furniture, Office Supplies, Technology  
+- **Segments**: Consumer, Corporate, Home Office  
+
+### ✅ Data Preprocessing:
+- Removed duplicates & missing values  
+- Standardized date formats (`Order Date`, `Ship Date`)  
+- Derived metrics: `Profit Margin (%)`, `Order Value`, `Days to Ship`  
+- Optimized CSV structure for fast `fetch()` + `PapaParse`/`d3.csv`
 
 ---
 
@@ -21,30 +45,14 @@ All processing happens client-side using JavaScript. No server, no database — 
 
 | Feature | Description |
 |--------|-------------|
-| 🔍 **Interactive Filters** | Filter by **Category**, **Region**, and **Year** — combine filters for instant drill-down. |
-| 📈 **Hero Trend Chart** | Monthly sales line chart to detect growth momentum and seasonality. |
-| 📊 **Category Pair View** | Side-by-side comparison of **Sales vs. Profit** per category — spot high-revenue but low-margin traps. |
-| 🌡️ **Profit Heatmap** | Matrix of **Category × Region** to reveal strategic profit hotspots and underperformers. |
-| 🏙️ **Top Cities** | Identify high-demand locations by total sales. |
-| 👥 **Segments & Discount Analysis** | Understand how customer segments respond to discounts — with scatter plots showing **discount vs. profit** elasticity. |
+| 🔍 **Interactive Filters** | Combine **Category**, **Region**, and **Year** for real-time drill-down. |
+| 📈 **Hero Trend Chart** | Monthly sales line chart — spot growth, dips, and seasonality (e.g., Q4 spikes). |
+| 📊 **Category Pair Analysis** | Compare **Sales vs. Profit** per category — uncover high-revenue, low-margin traps. |
+| 🌡️ **Profit Heatmap** | `Category × Region` matrix to reveal strategic hotspots (e.g., West + Technology). |
+| 🏙️ **Top Cities** | Rank cities by total sales — identify high-demand markets. |
+| 👥 **Segment & Discount Insights** | Scatter plots showing **Discount % vs. Profit** — visualize elasticity per segment. |
 
----
-
-## 📊 Dataset
-
-- **Source**: [Global Superstore Dataset on Kaggle](https://www.kaggle.com/datasets/juandimarq/global-superstore-dataset)  
-- **File Used**: `superstore_clean.csv` *(pre-processed & cleaned for analysis)*  
-- **Rows**: ~11,000 transaction records  
-- **Time Range**: 2014–2017  
-- **Geography**: 4 Regions (East, West, Central, South), 530+ Cities  
-- **Categories**: Furniture, Office Supplies, Technology  
-- **Segments**: Consumer, Corporate, Home Office  
-
-### ✅ Data Cleaning Highlights:
-- Removed duplicates & missing values  
-- Standardized date formats  
-- Derived key metrics: `Profit Margin (%)`, `Order Value`, etc.  
-- Optimized for fast client-side parsing
+> 💡 All charts are responsive, animated, and interactive (hover, zoom, filter-linked).
 
 ---
 
@@ -52,20 +60,21 @@ All processing happens client-side using JavaScript. No server, no database — 
 
 | Layer | Technologies |
 |------|--------------|
-| **Core** | HTML5, CSS3 (Neon Glassmorphism), Vanilla JavaScript |
+| **Core** | HTML5, CSS3 (Custom Neon Glassmorphism), Vanilla JavaScript |
 | **Charts** | [Chart.js](https://www.chartjs.org/), [Plotly.js](https://plotly.com/javascript/) |
-| **Styling** | Custom CSS with variables (no framework) — responsive & dark-mode ready |
-| **Deployment** | Vercel (static site) |
-| **Tooling** | VS Code, Git, GitHub |
+| **Data Parsing** | `fetch()` + native CSV parsing (no external libs required) |
+| **Styling** | CSS Variables, Flexbox, Grid — dark-mode native, mobile-responsive |
+| **Deployment** | [Vercel](https://vercel.com/) (static site) |
+| **Tooling** | VS Code, Git, GitHub, Kaggle |
 
-> 💡 **Why no framework?**  
-> To keep the project lightweight, hackathon-friendly, and easy to understand — while still delivering rich interactivity.
+> 🚀 **Why no framework?**  
+> Built for hackathons, learning, and lightweight deployment — easy to understand, modify, and extend.
 
 ---
 
 ## 🚀 How to Run Locally
 
-1. **Clone this repo**
+1. **Clone the repo**
    ```bash
-   git clone https://github.com/Reswn/Visualisasi-Data-1.git
-   cd Visualisasi-Data-1
+   git clone https://github.com/Reswn/Global-Sales-Intelligence-Supershop-Data-Visualization.git
+   cd Global-Sales-Intelligence-Supershop-Data-Visualization
