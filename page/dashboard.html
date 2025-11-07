@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superstore - GSI Dashboard</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+
+  <body class="bg">
+    <canvas id="bg-particles"></canvas>
+    <!--  NAVBAR MUST BE INSIDE BODY -->
+    <nav class="neon-navbar">
+      <a href="/index.html" class="logo">📊 GSI Insights</a>
+
+      <div class="nav-right" id="navLinks">
+        <a class="nav-link" href="/index.html">Home</a>
+        <a class="nav-link active" href="/page/dashboard.html">Dashboard</a>
+        <a class="nav-link" href="/page/reports.html">Reports</a>
+        <a class="nav-link" href="/page/analytics.html">Analytics</a>
+        <!-- <a class="nav-link" href="support.html">Support</a> -->
+      </div>
+      <div class="hamburger" id="hamburger">☰</div>
+    </nav>
+    <!-- SMALL SPACER so header does not stick to navbar -->
+    <div class="mt-20"></div>
+
+    <!-- HERO HEADER WITH PROPER CONTAINER -->
+    <div class="hero-banner max-w-7xl mx-auto px-4">
+      <div class="hero-content">
+        <h1>Superstore GSI Insights</h1>
+        <p class="subtitle">
+          Real-time analytics of global sales, profit performance, and customer
+          behavior.
+        </p>
+
+        <div class="meta-info">
+          <span>📦 Dataset: Superstore Clean (48K+ orders)</span>
+          <span>📅 Period: 2011 — 2014</span>
+          <span>⚡ Powered by Chart.js & Plotly</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ MAIN PAGE CONTENT -->
+    <div class="container mx-auto px-4 py-6 max-w-7xl">
+      <!-- Filters -->
+      <div class="glass row gap-3 justify-center p-3 mb-6">
+        <select id="categoryFilter" class="pick min-w-[180px]">
+          <option value="ALL">Category: ALL</option>
+        </select>
+
+        <select id="regionFilter" class="pick min-w-[180px]">
+          <option value="ALL">Region: ALL</option>
+        </select>
+
+        <select id="yearFilter" class="pick min-w-[140px]">
+          <option value="ALL">Year: ALL</option>
+        </select>
+
+        <button id="resetBtn" class="btn">Reset</button>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div class="kpi glass">
+          <div class="kpi-label">Total Sales</div>
+          <div id="kpiSales" class="kpi-value">-</div>
+        </div>
+        <div class="kpi glass">
+          <div class="kpi-label">Total Profit</div>
+          <div id="kpiProfit" class="kpi-value">-</div>
+        </div>
+        <div class="kpi glass">
+          <div class="kpi-label">Total Orders</div>
+          <div id="kpiOrders" class="kpi-value">-</div>
+        </div>
+        <div class="kpi glass">
+          <div class="kpi-label">Avg Discount</div>
+          <div id="kpiDiscount" class="kpi-value">-</div>
+        </div>
+      </div>
+
+      <!-- Hero Trend -->
+      <div class="card glass mb-6">
+        <div class="card-head">
+          <span class="dot cyan"></span>
+          <h3>Monthly Sales Trend</h3>
+        </div>
+        <div class="h-80 rel"><canvas id="monthlySalesChart"></canvas></div>
+      </div>
+
+      <!-- Category Pair (2 charts) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div class="card glass">
+          <div class="card-head">
+            <span class="dot purple"></span>
+            <h3>Sales per Category</h3>
+          </div>
+          <div class="h-72 rel"><canvas id="catSalesChart"></canvas></div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-head">
+            <span class="dot magenta"></span>
+            <h3>Profit per Category</h3>
+          </div>
+          <div class="h-72 rel"><canvas id="catProfitChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Heatmap -->
+      <div class="card glass mb-6">
+        <div class="card-head">
+          <span class="dot teal"></span>
+          <h3>Profit Heatmap (Category × Region)</h3>
+        </div>
+        <div id="heatmapProfit" class="h-96 w-full"></div>
+      </div>
+
+      <!-- Bottom row (4 widgets) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div class="card glass">
+          <div class="card-head">
+            <span class="dot cyan"></span>
+            <h3>Sales per Sub-Category (Top 15)</h3>
+          </div>
+          <div class="h-72 rel"><canvas id="subcatSalesChart"></canvas></div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-head">
+            <span class="dot purple"></span>
+            <h3>Profit vs Discount</h3>
+          </div>
+          <div class="h-72 rel"><canvas id="profitDiscountChart"></canvas></div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-head">
+            <span class="dot magenta"></span>
+            <h3>Customer Segment Distribution</h3>
+          </div>
+          <div class="h-72 rel"><canvas id="segmentPieChart"></canvas></div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-head">
+            <span class="dot teal"></span>
+            <h3>Top 10 Cities by Sales</h3>
+          </div>
+          <div class="h-72 rel"><canvas id="topCitiesChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer glass">
+      <div class="brand-mini">
+        <span class="logo-dot"></span>
+        <span>Global Sales Intelligence</span>
+      </div>
+      <div class="socials">
+        <a
+          href="https://www.linkedin.com/in/reni-suwandi/"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#00eaff">
+            <path
+              d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.84-2.2 3.8-2.2 4.06 0 4.81 2.67 4.81 6.15V24h-4v-7.1c0-1.69-.03-3.86-2.35-3.86-2.36 0-2.72 1.84-2.72 3.74V24h-4V8z"
+            />
+          </svg>
+        </a>
+        <a href="https://github.com/Reswn" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#b026ff">
+            <path
+              d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.57v-2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.77-1.34-1.77-1.09-.76.08-.75.08-.75 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.67 1.66.25 2.88.12 3.18.77.84 1.24 1.9 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.23v3.31c0 .31.21.68.82.57A12 12 0 0 0 12 .5z"
+            />
+          </svg>
+        </a>
+        <a href="renisuwandi1011@gmail.com" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#00ffc3">
+            <path
+              d="M2 6c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v.2l-10 6.3L2 6.2V6zm0 2.9V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.9l-9.4 5.9a2 2 0 0 1-2.2 0L2 8.9z"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="copy">© 2025 Reni Kartika Suwandi — All Rights Reserved</div>
+    </footer>
+
+    <!-- JS -->
+    <script src="/js/main.js"></script>
+  </body>
+</html>

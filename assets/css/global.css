@@ -1,0 +1,592 @@
+/* ==========================
+   GLOBAL NEON THEME
+   ========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background: #080810;
+  color: #e8ebff;
+}
+
+/* Background Radial Gradient */
+body {
+  background: radial-gradient(1200px 800px at 10% -10%, #1b1b2a 0%, #0f0f10 40%)
+      fixed,
+    radial-gradient(900px 700px at 90% 110%, #1a2537 0%, #0f0f10 40%) fixed;
+}
+
+/* Canvas particle base */
+#bg-particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ==========================
+     NAVBAR FINAL
+     ========================== */
+
+.neon-navbar {
+  width: 100%;
+  padding: 16px 40px;
+  background: rgba(10, 10, 25, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.25);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: cyan;
+  text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #e7faff;
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.nav-link:hover {
+  color: cyan;
+  text-shadow: 0 0 8px cyan;
+}
+
+/* Active link highlight */
+.nav-link.active {
+  color: cyan;
+  font-weight: 700;
+  border-bottom: 2px solid cyan;
+  padding-bottom: 4px;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #e7faff;
+}
+
+/* ==========================
+     GLASS COMPONENT
+     ========================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+/* ==========================
+     SECTION / PAGE STRUCTURE
+     ========================== */
+
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 120px auto 80px auto;
+  padding: 0 30px;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-head h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #e7ecff;
+}
+
+.section-head p {
+  margin-top: 10px;
+  color: #b8c4e4;
+  font-size: 1rem;
+}
+
+/* ==========================
+     PAGE HERO
+     ========================== */
+
+.page-hero {
+  max-width: 900px;
+  margin: 140px auto 60px auto;
+  padding: 40px 50px;
+  text-align: center;
+}
+
+.page-hero .title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 0 20px #00eaff;
+}
+
+.page-hero .subtitle {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: #9eb0d8;
+}
+
+/* ==========================
+     BUTTONS
+     ========================== */
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, #00eaff, #b026ff);
+  color: #0b0b15;
+  box-shadow: 0 0 10px #00eaff, inset 0 0 10px #b026ff;
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px #00eaff, inset 0 0 14px #b026ff;
+}
+
+.btn.ghost {
+  border: 2px solid #00eaff;
+  color: #00eaff;
+}
+
+.btn.ghost:hover {
+  background: rgba(0, 234, 255, 0.15);
+}
+
+.btn.small {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+}
+
+.btn.large {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+}
+
+/* ==========================
+     REPORT CARDS (reports.html)
+     ========================== */
+
+.reports-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.report-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.report-card p {
+  color: #b8c4e4;
+  margin-bottom: 14px;
+}
+
+/* ==========================
+     ANALYTICS GRID (analytics.html)
+     ========================== */
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.analytic-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.analytic-card p {
+  color: #b8c4e4;
+}
+/* ====================
+insight
+================ */
+.insight {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: rgba(0, 255, 255, 0.06);
+  border-left: 3px solid cyan;
+  font-size: 0.9rem;
+  color: #dff8ff;
+  border-radius: 6px;
+  line-height: 1.5;
+}
+
+/* ==========================
+     FOOTER (Optional shared)
+     ========================== */
+
+.footer {
+  margin-top: 90px;
+  padding: 30px;
+  text-align: center;
+  color: #a4b1d4;
+}
+
+/* ==========================
+     RESPONSIVE
+     ========================== */
+
+@media (max-width: 900px) {
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right.show {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(10, 10, 25, 0.92);
+    padding: 20px 30px;
+    border-radius: 12px;
+    gap: 20px;
+    border: 1px solid rgba(0, 255, 255, 0.15);
+  }
+}
+/* ===================== REPORT PAGE ===================== */
+
+/* Tabs Container */
+.report-tabs {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+/* Each Tab Button */
+.r-tab {
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  color: #dffaff;
+  cursor: pointer;
+  transition: 0.25s;
+  white-space: nowrap;
+}
+
+.r-tab:hover {
+  background: rgba(0, 255, 255, 0.15);
+  color: cyan;
+  box-shadow: 0 0 10px cyan;
+}
+
+.r-tab.active {
+  background: rgba(0, 255, 255, 0.25);
+  border-color: cyan;
+  color: cyan;
+  font-weight: bold;
+  box-shadow: 0 0 15px cyan;
+}
+
+/* Report Section Hidden by Default */
+.report-section {
+  display: none;
+  padding-bottom: 40px;
+}
+
+/* The Active Section */
+.report-section.show {
+  display: block;
+}
+
+/* Card Style */
+.card {
+  background: rgba(20, 20, 30, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  margin-bottom: 12px;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-top: 110px;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: #eaffff;
+  text-shadow: 0 0 12px cyan;
+}
+
+.page-header .subtitle {
+  opacity: 0.75;
+  margin-top: 6px;
+  font-size: 1rem;
+}
+/* ===== SUMMARY STYLE ===== */
+
+.summary-card {
+  padding: 25px;
+  background: rgba(20, 20, 35, 0.8);
+  border: 1px solid #00eaff20;
+  border-radius: 14px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.summary-box {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 18px 18px;
+  border-radius: 12px;
+  border: 1px solid #00eaff20;
+  transition: 0.25s;
+}
+
+.summary-box:hover {
+  border-color: #00eaff70;
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-3px);
+}
+
+.summary-title {
+  font-size: 18px;
+  color: #00eaff;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.summary-text {
+  color: #e5e9ff;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.summary-text b {
+  color: #b7d8ff;
+}
+/* Footer */
+.footer {
+  max-width: 1200px;
+  margin: 28px auto 24px;
+  padding: 14px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.brand-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer .socials {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.copy {
+  color: #a8c6ff;
+  font-size: 12px;
+  margin-top: 8px;
+}
+/* ---- Analytics helpers ---- */
+.mini-table {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  font-size: 14px;
+  color: #dfe9ff;
+}
+.mini-table .head {
+  color: #8fb8ff;
+  font-weight: 700;
+  border-bottom: 1px solid #ffffff20;
+  padding-bottom: 6px;
+}
+.muted {
+  color: #9db0d1;
+}
+
+/* optional: container utility */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+.mt-6 {
+  margin-top: 24px;
+}
+.grid {
+  display: grid;
+}
+.gap-4 {
+  gap: 16px;
+}
+.gap-6 {
+  gap: 24px;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.py-6 {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* ===== Analytics Layout Upgrade ===== */
+
+.analytics-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 25px;
+}
+
+/* KPI Grid */
+.kpi-grid-upgraded {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.neon-card {
+  background: rgba(25, 25, 40, 0.72);
+  border: 1px solid #00eaff25;
+  padding: 22px;
+  border-radius: 14px;
+  transition: 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.neon-card:hover {
+  border-color: #00eaff80;
+  transform: translateY(-4px);
+}
+
+.kpi-label {
+  color: #bcdcff;
+  font-size: 14px;
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 4px;
+}
+
+/* Section */
+.ana-section {
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: #00eaff;
+}
+
+/* Chart Box */
+.chart-box {
+  height: 380px;
+}
+
+/* Insight text */
+.insight-text {
+  margin-top: 12px;
+  color: #d1e4ff;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* RFM Grid */
+.rfm-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 20px;
+}
+
+.rfm-table {
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.mini-title {
+  margin-bottom: 10px;
+  font-size: 17px;
+  color: #00eaff;
+}
+
+.mini-table-content {
+  font-size: 14px;
+  color: #d1e4ff;
+  line-height: 1.5;
+}
